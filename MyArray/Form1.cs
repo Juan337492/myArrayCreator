@@ -12,7 +12,8 @@ using System.Windows.Forms;
     Juan Rodriguez
     CIST 2341
     C# Programming 1
-    Lab #8
+    Lab #9
+try & catch
 This is my code....
 *****************************************************************/
 namespace MyArray
@@ -26,15 +27,26 @@ namespace MyArray
         // creates an array using List class
         // made the array global 
         int input = 0;
-        List<int> myNumberList = new List<int>();
+        int[] myNumberList = new int[10];
+        int i = 0;
         private void addValueBtn_Click(object sender, EventArgs e)
         {
             // gets the string in text box then converts it
             getInputAndConvert();
             // adds converted string to array
-            myNumberList.Add(input);
-            //lets user know what happened
-            Console.WriteLine("You added " + input + " to the array.");
+            try
+            {
+                myNumberList[i] = input;
+                i++;
+                //lets user know what happened
+                Console.WriteLine("You added " + input + " to the array.");
+            }
+            catch {
+                MessageBox.Show("Array only stores 10 values. Array is now full!");
+            }
+            
+
+            
         }
 
         public void getInputAndConvert()
@@ -46,7 +58,7 @@ namespace MyArray
         private void displayValuesBtn_Click(object sender, EventArgs e)
         {
             
-            for (int index = 0; index < myNumberList.Count; index++)
+            for (int index = 0; index < myNumberList.Length; index++)
             {
                 Console.WriteLine(myNumberList[index]);
             }
